@@ -22,29 +22,27 @@ struct ContentView: View {
         
     
     var body: some View {
-            VStack {
-                HStack {
-                    ForEach(StatisticsPages.allCases, id: \.self) { item in
-                        Button {
-                            withAnimation {
-                                selectedTab = item
-                            }
-                        } label: {
-                            Text("\(item.tabName) Button")
+        VStack {
+            HStack {
+                ForEach(StatisticsPages.allCases, id: \.self) { item in
+                    Button {
+                        withAnimation {
+                            selectedTab = item
                         }
+                    } label: {
+                        Text("\(item.tabName) Button")
                     }
                 }
-                
-                TabView(selection: $selectedTab) {
-                    generateTabContent(with: data).tag(StatisticsPages.today)
-                    generateTabContent(with: data).tag(StatisticsPages.week)
-                    generateTabContent(with: data).tag(StatisticsPages.month)
-                    generateTabContent(with: data).tag(StatisticsPages.dateSelection)
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
             }
-  
-        
+            
+            TabView(selection: $selectedTab) {
+                generateTabContent(with: data).tag(StatisticsPages.today)
+                generateTabContent(with: data).tag(StatisticsPages.week)
+                generateTabContent(with: data).tag(StatisticsPages.month)
+                generateTabContent(with: data).tag(StatisticsPages.dateSelection)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+        }
     }
     
     @ViewBuilder

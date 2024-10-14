@@ -11,7 +11,17 @@ import SwiftUI
 struct TabViewAnimationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                ContentView()
+                    .tabItem {
+                        Label("123", image: "")
+                    }
+                
+                ContentView()
+                    .tabItem {
+                        Label("2312", image: "")
+                    }
+            }
         }
     }
 }
